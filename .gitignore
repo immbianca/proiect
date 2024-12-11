@@ -1,0 +1,44 @@
+# Compiled binary files
+*.exe
+*.out
+
+# Object files
+*.o
+*.obj
+
+# Dependency files
+*.d
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Graphics-related intermediate files
+*.tga
+*.bmp
+*.png
+*.jpg
+*.jpeg
+
+# Build directories
+/build/
+/bin/
+/lib/
+
+# IDE-specific files
+.vscode/
+*.code-workspace
+*.cproject
+*.project
+.idea/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.user
+
+# CMake build files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
