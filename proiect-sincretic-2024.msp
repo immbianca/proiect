@@ -28,7 +28,7 @@ optimizeLevel=0
 libraryPath=
 outputFilename=Debug\proiect-sincretic-2024.exe
 libraries=
-extraLinkerOptions=
+extraLinkerOptions=-lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32
 ignoreStartupFile=0
 ignoreDefaultLibs=0
 stripExecutableFile=0
@@ -80,11 +80,9 @@ resourceIncludeDirectory=
 extraResourceOptions=
 
 [Source]
-
+1=program.cpp
 [Header]
-
 [Resource]
-
 [Other]
-
 [History]
+program.cpp,93
