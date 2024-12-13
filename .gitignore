@@ -14,13 +14,6 @@
 *.temp
 *.log
 
-# Graphics-related intermediate files
-*.tga
-*.bmp
-*.png
-*.jpg
-*.jpeg
-
 # Build directories
 /build/
 /bin/
