@@ -37,3 +37,4 @@ cmake_install.cmake
 Makefile
 proiect-sincretic-2024.msp
 proiect-sincretic-2024.msp
+*.msp

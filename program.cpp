@@ -1,8 +1,41 @@
 #include<graphics.h>
 #include<windows.h>
 #include<iostream.h>
+#include<fstream>
+#include<string>
+void instructiuni()
+{
+    settextstyle(SIMPLEX_FONT, HORIZ_DIR, 1);
+    int x = 10;
+    int y = 20;
+    int lineHeight = 20;
+    int windowHeight = getmaxy(); 
 
-void pagina_principala() {
+    std::ifstream file("Assets/fisiere/instructiuni.txt");
+    if (!file.is_open()) {
+        outtextxy(10, y, "Eroare la deschiderea fisierului!");
+        getch();
+        return;
+    }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        if (y > windowHeight - lineHeight) {
+            outtextxy(10, y, "Text prea lung pentru ecran!");
+            return;
+        }
+        outtextxy(x, y, const_cast<char*>(line.c_str()));
+        y += lineHeight;
+    }
+
+    file.close();
+}
+void setari()
+{
+	outtextxy(200, 200, "Sunet:");
+	outtextxy(200,300,"Rezolutie:");
+}
+bool pagina_principala() {
     int option=0;
     bool running=true;
 
@@ -37,19 +70,25 @@ void pagina_principala() {
                 cleardevice();
                 outtextxy(100, 100, "Meniul Start");
                 getch();
+				return 1;
                 break;
             case 1:
                 cleardevice();
                 outtextxy(100, 100, "Meniul instructiuni");
+				instructiuni();
                 getch();
+				return 1;
                 break;
             case 2:
                 cleardevice();
                 outtextxy(100, 100, "Meniul Setari");
+				setari();
                 getch();
+				return 1;
                 break;
             case 3:
                 running = false;
+				return 0;
                 break;
             }
             break;
@@ -58,10 +97,12 @@ void pagina_principala() {
 }
 int main()
 {
+	bool var=true;
 	int screenWidth= GetSystemMetrics(SM_CXSCREEN);
 	int screenHeight= GetSystemMetrics(SM_CYSCREEN);
     initwindow(screenWidth, screenHeight, "Turnurie din Hanoi");
-	
+	while(var)
+	{
 	 setbkcolor(WHITE);
 	 cleardevice();
 
@@ -70,8 +111,8 @@ int main()
 	 outtextxy(100, 150, "Turnurile din Hanoi");
 
 	readimagefile("Assets/images/turnuri_v1.jpg", 950, 100, 1450, 700);
-	pagina_principala();
-	
+	var=pagina_principala();
+	}
     closegraph();
     return 0;
 }
