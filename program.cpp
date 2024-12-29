@@ -1,6 +1,6 @@
 #include<graphics.h>
 #include<windows.h>
-#include<iostream.h>
+#include<iostream>
 #include<fstream>
 #include<string>
 void instructiuni()
