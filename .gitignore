@@ -1,0 +1,43 @@
+# Fisiere si directoare generate de build-uri
+build/
+bin/
+obj/
+*.o
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Fisiere generate de IDE-uri
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln
+*.db
+*.DS_Store
+
+# Fisiere temporare si log-uri
+*.log
+*.tmp
+*.temp
+*.swp
+*.bak
+
+# Fisiere specifice sistemului de operare
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# CMake fisiere generate
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Alte fisiere ce nu trebuie incluse
+*.gch
+*.pch
+*.class
