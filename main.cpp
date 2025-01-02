@@ -40,6 +40,10 @@ void tije(const vector<stack<int>>& tower, int n){
     }
     cout<<"====================="<<endl;
 }
+bool castiga(const vector<stack<int>>& towers, int n){
+    return towers[2].size()==n;
+}
+
 void meniu(){
     system("cls");
     cout<<"====================="<<endl;
