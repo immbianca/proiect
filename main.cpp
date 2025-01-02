@@ -1,5 +1,6 @@
 #include<iostream>
-
+#include <vector>
+#include <stack>
 using namespace std;
 
 void instructiuni(){
@@ -20,6 +21,24 @@ void instructiuni(){
     cout<<"Apasa orice tasta pentru a reveni la meniu...";
     cin.get();
     cin.get();
+}
+
+void tije(const vector<stack<int>>& tower, int n){
+    cout<<endl<<"Tijele:"<<endl;
+    for(int i=0;i<3;++i){
+        cout<<char('A'+i)<<": ";
+        stack<int> temp=tower[i];
+        vector<int> discuri;
+        while(!temp.empty()){
+            discuri.push_back(temp.top());
+            temp.pop();
+        }
+        for(auto it=discuri.rbegin();it!=discuri.rend();++it){
+            cout<<*it<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<"====================="<<endl;
 }
 void meniu(){
     system("cls");
