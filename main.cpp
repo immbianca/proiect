@@ -40,10 +40,57 @@ void tije(const vector<stack<int>>& tower, int n){
     }
     cout<<"====================="<<endl;
 }
+
 bool castiga(const vector<stack<int>>& towers, int n){
     return towers[2].size()==n;
 }
 
+void joc(){
+    int n;
+    cout<<"Introduceti numarul de discuri(minim 3, maxim 10): ";
+    while(true){
+        cin>>n;
+        if(n>=3 && n<=10){
+            break;
+        }
+        cout<<"Numarul de discuri trebuie sa fie intre 3 si 10. Reintroduceti: ";
+    }
+
+    vector<stack<int>> towers(3);
+    for(int i=n;i>=1;--i){
+        towers[0].push(i);
+    }
+
+    int from, to;
+    while(!castiga(towers,n)){
+        tije(towers,n);
+        cout<<"Introdu tija sursa (1-3) si tija destinatie (1-3): ";
+        cin>>from>>to;
+
+        if(from<1 || from>3 || to<1 || to>3){
+            cout<<"Tija invalida! Reintroduceti: ";
+            continue;
+        }
+
+        --from;
+        --to;
+
+        if(towers[from].empty()){
+            cout<<"Tija sursa goala! Reintroduceti: ";
+            continue;
+        }
+
+        if(!towers[to].empty() && towers[from].top()>towers[to].top()){
+            cout<<"Discul nu poate fi plasat pe disc mai mic! Reintroduceti: ";
+            continue;
+        }
+
+        towers[to].push(towers[from].top());
+        towers[from].pop();
+    }
+
+    cout<<"Felicitari! Ati castigat!"<<endl;
+}
 void meniu(){
     system("cls");
     cout<<"====================="<<endl;
@@ -62,6 +109,7 @@ int main(){
         cin>>optiune;
         switch(optiune){
             case 1:
+                joc();
                 break;
             case 2:
                 instructiuni();
