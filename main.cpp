@@ -82,13 +82,11 @@ void distributie(vector<stack<int>>& towers, int n){
         }
 
     
-    for(int i=n;i>=1;--i){
-        int tijarandom;
-            do{
-                tijarandom=rand()%3;
-            }while(!towers[tijarandom].empty() && towers[tijarandom].top()<i);
-            towers[tijarandom].push(i);
-    }
+        int tijarandom=0;
+        for(int i=n-1;i>=0;--i){
+            towers[tijarandom].push(discuri[i]);
+            tijarandom=(tijarandom+1)%3;
+        }
    }while(castiga(towers,n));
 }
 
