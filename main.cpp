@@ -144,6 +144,7 @@ void meniu(){
     cout<<"====================="<<endl;
     cout<<"Turnutile din Hanoi"<<endl;
     cout<<"====================="<<endl;
+    cout<<"0. Secventa de testare"<<endl;
     cout<<"1. Start joc"<<endl;
     cout<<"2. Instructiuni"<<endl;
     cout<<"3. Iesire"<<endl;
@@ -156,6 +157,10 @@ int main(){
         meniu();
         cin>>optiune;
         switch(optiune){
+            case 0:
+                system();
+                cout<<"Secventa de testare"<<endl;
+                break;
             case 1:
                 joc();
                 break;
