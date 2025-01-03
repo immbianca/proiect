@@ -2,10 +2,24 @@
 #include <vector>
 #include <stack>
 #include <time.h>
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <cstdlib>
+#endif
+
 using namespace std;
 
-void instructiuni(){
+void system(){
+    #ifdef _WIN32
     system("cls");
+    #else
+    system("clear");
+    #endif
+}
+
+void instructiuni(){
+    system();
     cout<<"\n=== Instructiuni ===\n";
     cout<<"Scopul jocului este de a muta toate discurile de pe unul dintre turnuri pe celalalt, folosind un al treilea turn ca suport.\n";
     cout<<"Regulile jocului sunt simple:\n";
@@ -67,7 +81,7 @@ void distributie(vector<stack<int>>& towers, int n){
 
 void joc(){
     int n;
-    system("cls");
+    system();
     cout<<"Introduceti numarul de discuri(minim 3, maxim 10): ";
     while(true){
         cin>>n;
@@ -82,7 +96,7 @@ void joc(){
 
     int from, to;
     while(!castiga(towers,n)){
-        system("cls");
+        system();
         tije(towers,n);
         cout<<"Introdu tija sursa (1-3) si tija destinatie (1-3): ";
         cin>>from>>to;
@@ -108,14 +122,14 @@ void joc(){
         towers[from].pop();
     }
 
-    system("cls");
+    system();
     cout<<"Felicitari! Ati castigat!"<<endl;
     cout<<endl<<"Apasa orice tasta pentru a reveni la meniu...";
     cin.get();
     cin.get();
 }
 void meniu(){
-    system("cls");
+    system();
     cout<<"====================="<<endl;
     cout<<"Turnutile din Hanoi"<<endl;
     cout<<"====================="<<endl;
@@ -138,6 +152,7 @@ int main(){
                 instructiuni();
                 break;
             case 3:
+                system();
                 cout<<"La revedere!"<<endl;
                 break;
             default:
