@@ -63,12 +63,25 @@ bool castiga(const vector<stack<int>>& towers, int n){
 void distributie(vector<stack<int>>& towers, int n){
    srand(time(0));
 
+   vector<int> discuri;
+   vector<bool> used(n+1,false);
+
+   while(discuri.size()<n){
+    int disc=rand()%n+1;
+    if(!used[disc]){
+        discuri.push_back(disc);
+        used[disc]=true;
+    }
+   }
+
    do{
     for (auto& tower : towers){
             while(!tower.empty()){
             tower.pop();
             }
         }
+
+    
     for(int i=n;i>=1;--i){
         int tijarandom;
             do{
