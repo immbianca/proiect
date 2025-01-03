@@ -47,6 +47,7 @@ bool castiga(const vector<stack<int>>& towers, int n){
 
 void joc(){
     int n;
+    system("cls");
     cout<<"Introduceti numarul de discuri(minim 3, maxim 10): ";
     while(true){
         cin>>n;
@@ -63,6 +64,7 @@ void joc(){
 
     int from, to;
     while(!castiga(towers,n)){
+        system("cls");
         tije(towers,n);
         cout<<"Introdu tija sursa (1-3) si tija destinatie (1-3): ";
         cin>>from>>to;
@@ -84,12 +86,15 @@ void joc(){
             cout<<"Discul nu poate fi plasat pe disc mai mic! Reintroduceti: ";
             continue;
         }
-
         towers[to].push(towers[from].top());
         towers[from].pop();
     }
 
+    system("cls");
     cout<<"Felicitari! Ati castigat!"<<endl;
+    cout<<endl<<"Apasa orice tasta pentru a reveni la meniu...";
+    cin.get();
+    cin.get();
 }
 void meniu(){
     system("cls");
