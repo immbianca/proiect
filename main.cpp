@@ -1,6 +1,7 @@
 #include<iostream>
 #include <vector>
 #include <stack>
+#include <time.h>
 using namespace std;
 
 void instructiuni(){
@@ -41,6 +42,17 @@ void tije(const vector<stack<int>>& tower, int n){
     cout<<"====================="<<endl;
 }
 
+void distributie(vector<stack<int>>& towers, int n){
+   srand(time(0));
+   for(int i=n;i>=1;--i){
+    int tijarandom;
+    do{
+        tijarandom=rand()%3;
+    }while(!towers[tijarandom].empty() && towers[tijarandom].top()<i);
+    towers[tijarandom].push(i);
+   }
+}
+
 bool castiga(const vector<stack<int>>& towers, int n){
     return towers[0].empty() && (towers[1].size()==n || towers[2].size()==n);
 }
@@ -58,9 +70,7 @@ void joc(){
     }
 
     vector<stack<int>> towers(3);
-    for(int i=n;i>=1;--i){
-        towers[0].push(i);
-    }
+    distributie(towers,n);
 
     int from, to;
     while(!castiga(towers,n)){
