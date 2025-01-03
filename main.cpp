@@ -42,7 +42,7 @@ void tije(const vector<stack<int>>& tower, int n){
 }
 
 bool castiga(const vector<stack<int>>& towers, int n){
-    return towers[2].size()==n;
+    return towers[0].empty() && (towers[1].size()==n || towers[2].size()==n);
 }
 
 void joc(){
