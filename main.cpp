@@ -18,6 +18,34 @@ void system(){
     #endif
 }
 
+void determinare(int n, char from, char to, char aux){
+    if(n==1){
+        cout<<"Mutare disc "<<n<<" de la "<<from<<" la "<<to<<endl;
+        return;
+    }
+    determinare(n-1,from,aux,to);
+    cout<<"Mutare disc "<<n<<" de la "<<from<<" la "<<to<<endl;
+    determinare(n-1,aux,to,from);
+}
+
+void testare(){
+    system();
+    cout<<"=== Secventa de testare ==="<<endl;
+    int n;
+    cout<<"Introduceti numarul de discuri(minim 3): ";
+    while(true){
+        cin>>n;
+        if(n>=3){
+            break;
+        }
+        cout<<"Numarul de discuri trebuie sa fie minim 3. Reintroduceti: ";
+    }
+    cout<<"Secventa de mutari pentru "<<n<<" discuri:"<<endl;
+    determinare(n,'A','C','B');
+    cout<<endl<<"Apasa orice tasta pentru a reveni la meniu...";
+    cin.get();
+    cin.get();
+}
 void instructiuni(){
     system();
     cout<<"\n=== Instructiuni ===\n";
@@ -158,7 +186,7 @@ int main(){
         cin>>optiune;
         switch(optiune){
             case 0:
-                system();
+                testare();
                 cout<<"Secventa de testare"<<endl;
                 break;
             case 1:
