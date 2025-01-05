@@ -18,14 +18,49 @@ void system(){
     #endif
 }
 
-void determinare(int n, char from, char to, char aux){
+
+void tije(const vector<stack<int>>& tower, int n){
+    cout<<endl<<"Tijele:"<<endl;
+    for(int i=0;i<3;++i){
+        cout<<char('A'+i)<<": ";
+        stack<int> temp=tower[i];
+        vector<int> discuri;
+        while(!temp.empty()){
+            discuri.push_back(temp.top());
+            temp.pop();
+        }
+        for(auto it=discuri.rbegin();it!=discuri.rend();++it){
+            cout<<*it<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<"====================="<<endl;
+}
+
+void determinare(int n, char from, char to, char aux,vector<stack<int>>& towers){
     if(n==1){
         cout<<"Mutare disc "<<n<<" de la "<<from<<" la "<<to<<endl;
+
+        int from_tija=from-'A';
+        int to_tija=to-'A';
+        towers[to_tija].push(towers[from_tija].top());
+        towers[from_tija].pop();
+        tije(towers,n);
+        cin.get();
         return;
     }
-    determinare(n-1,from,aux,to);
+    determinare(n-1,from,aux,to, towers);
+    
     cout<<"Mutare disc "<<n<<" de la "<<from<<" la "<<to<<endl;
-    determinare(n-1,aux,to,from);
+
+    int from_tija=from-'A';
+    int to_tija=to-'A';
+    towers[to_tija].push(towers[from_tija].top());
+    towers[from_tija].pop();
+    tije(towers,n);
+    cin.get();
+
+    determinare(n-1,aux,to,from, towers);
 }
 
 void testare(){
@@ -40,8 +75,21 @@ void testare(){
         }
         cout<<"Numarul de discuri trebuie sa fie minim 3. Reintroduceti: ";
     }
-    cout<<"Secventa de mutari pentru "<<n<<" discuri:"<<endl;
-    determinare(n,'A','C','B');
+
+    vector<stack<int>> towers(3);
+    for(int i=n;i>=1;--i){
+        towers[0].push(i);
+    }
+
+    cout<<endl<<"Tijele la inceput:"<<endl;
+    tije(towers,n);
+    cout<<"Apasa orice tasta pentru a continua...";
+    cin.get();
+    cin.get();
+
+    determinare(n,'A','C','B',towers);
+
+    cout<<endl<<"Acesta a fost rezultatul final"<<endl;
     cout<<endl<<"Apasa orice tasta pentru a reveni la meniu...";
     cin.get();
     cin.get();
@@ -64,24 +112,6 @@ void instructiuni(){
     cout<<"Apasa orice tasta pentru a reveni la meniu...";
     cin.get();
     cin.get();
-}
-
-void tije(const vector<stack<int>>& tower, int n){
-    cout<<endl<<"Tijele:"<<endl;
-    for(int i=0;i<3;++i){
-        cout<<char('A'+i)<<": ";
-        stack<int> temp=tower[i];
-        vector<int> discuri;
-        while(!temp.empty()){
-            discuri.push_back(temp.top());
-            temp.pop();
-        }
-        for(auto it=discuri.rbegin();it!=discuri.rend();++it){
-            cout<<*it<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<"====================="<<endl;
 }
 
 bool castiga(const vector<stack<int>>& towers, int n){
