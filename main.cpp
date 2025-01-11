@@ -131,17 +131,11 @@ bool castiga(const vector<stack<int>>& towers, int n, int dif){
 }
 
 void distributie(vector<stack<int>>& towers, int n){
-
-    for(auto& tower : towers){
-        while(!tower.empty()){
-            tower.pop();
-        }
-    }
-
     for(int i=n;i>=1;--i){
         towers[0].push(i);
     }
 }
+
 void distributie1(vector<stack<int>>& towers, int n, int dif){
    srand(time(0));
 
