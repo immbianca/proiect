@@ -94,6 +94,14 @@ void testare(){
     cin.get();
     cin.get();
 }
+
+void dificultate_meniu()
+{
+    cout<<endl<<"Selecteaza dificultatea"<<endl;
+    cout<<"1. Easy"<<endl;
+    cout<<"2. Hard"<<endl;
+    cout<<"Alege o optiune: ";
+}
 void instructiuni(){
     system();
     cout<<"\n=== Instructiuni ===\n";
@@ -114,12 +122,21 @@ void instructiuni(){
     cin.get();
 }
 
-bool castiga(const vector<stack<int>>& towers, int n){
-    return (towers[0].size()==n||towers[1].size()==n || towers[2].size()==n);
+bool castiga(const vector<stack<int>>& towers, int n, int dif){
+    if(dif == 1){
+    return (towers[2].size()==n);}
+    else {
+      return (towers[0].size()==n||towers[1].size()==n || towers[2].size()==n);
+    }
 }
 
+void distributie(vector<stack<int>>& towers, int n){
+    for(int i=n;i>=1;--i){
+        towers[0].push(i);
+    }
+}
 
-void distributie1(vector<stack<int>>& towers, int n){
+void distributie1(vector<stack<int>>& towers, int n, int dif){
    srand(time(0));
 
    vector<int> discuri;
@@ -146,7 +163,7 @@ void distributie1(vector<stack<int>>& towers, int n){
             towers[tijarandom].push(discuri[i]);
             tijarandom=(tijarandom+1)%3;
         }
-   }while(castiga(towers,n));
+   }while(castiga(towers,n,dif));
 }
 
 void joc(){
@@ -161,11 +178,24 @@ void joc(){
         cout<<"Numarul de discuri trebuie sa fie intre 3 si 10. Reintroduceti: ";
     }
 
+    dificultate_meniu();
+    while(true){
+        cin>> dif;
+        if(dif==1 || dif==2)
+            break;
+        cout<<"Optiune invalida!";
+    }
+
     vector<stack<int>> towers(3);
-    distributie1(towers,n);
+    if(dif==1){
+        distributie(towers,n);
+    }
+    else{
+        distributie1(towers,n, dif);
+    } 
 
     int from, to;
-    while(!castiga(towers,n)){
+    while(!castiga(towers,n,dif)){
         system();
         tije(towers,n);
         cout<<"Introdu tija sursa (1-3) si tija destinatie (1-3): ";
@@ -201,7 +231,7 @@ void joc(){
 void meniu(){
     system();
     cout<<"====================="<<endl;
-    cout<<"Turnutile din Hanoi"<<endl;
+    cout<<"Turnurile din Hanoi"<<endl;
     cout<<"====================="<<endl;
     cout<<"0. Secventa de testare"<<endl;
     cout<<"1. Start joc"<<endl;
