@@ -118,6 +118,7 @@ bool castiga(const vector<stack<int>>& towers, int n){
     return (towers[0].size()==n||towers[1].size()==n || towers[2].size()==n);
 }
 
+
 void distributie1(vector<stack<int>>& towers, int n){
    srand(time(0));
 
@@ -149,7 +150,7 @@ void distributie1(vector<stack<int>>& towers, int n){
 }
 
 void joc(){
-    int n;
+    int n, dif;
     system();
     cout<<"Introduceti numarul de discuri(minim 3, maxim 10): ";
     while(true){
@@ -161,7 +162,7 @@ void joc(){
     }
 
     vector<stack<int>> towers(3);
-    distributie(towers,n);
+    distributie1(towers,n);
 
     int from, to;
     while(!castiga(towers,n)){
