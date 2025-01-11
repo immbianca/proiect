@@ -118,7 +118,7 @@ bool castiga(const vector<stack<int>>& towers, int n){
     return (towers[0].size()==n||towers[1].size()==n || towers[2].size()==n);
 }
 
-void distributie(vector<stack<int>>& towers, int n){
+void distributie1(vector<stack<int>>& towers, int n){
    srand(time(0));
 
    vector<int> discuri;
@@ -209,6 +209,12 @@ void meniu(){
     cout<<"Alegere: ";
 }
 
+void dificultate(){
+    cout<<endl<<"Selecteaza dificultatea:\n";
+    cout<<"1. Easy\n";
+    cout<<"2. Hard\n";
+    cout<<"Alegere: ";
+}
 int main(){
     int optiune;
     do{
