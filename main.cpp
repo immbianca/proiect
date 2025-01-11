@@ -94,6 +94,14 @@ void testare(){
     cin.get();
     cin.get();
 }
+
+void dificultate_meniu()
+{
+    cout<<endl<<"Selecteaza dificultatea"<<endl;
+    cout<<"1. Easy"<<endl;
+    cout<<"2. Hard"<<endl;
+    cout<<"Alege o optiune: ";
+}
 void instructiuni(){
     system();
     cout<<"\n=== Instructiuni ===\n";
@@ -172,6 +180,7 @@ void joc(){
         cout<<"Numarul de discuri trebuie sa fie intre 3 si 10. Reintroduceti: ";
     }
 
+    
     vector<stack<int>> towers(3);
     distributie1(towers,n);
 
@@ -212,7 +221,7 @@ void joc(){
 void meniu(){
     system();
     cout<<"====================="<<endl;
-    cout<<"Turnutile din Hanoi"<<endl;
+    cout<<"Turnurile din Hanoi"<<endl;
     cout<<"====================="<<endl;
     cout<<"0. Secventa de testare"<<endl;
     cout<<"1. Start joc"<<endl;
