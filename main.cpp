@@ -92,7 +92,6 @@ void testare(){
     cout<<endl<<"Acesta a fost rezultatul final"<<endl;
     cout<<endl<<"Apasa orice tasta pentru a reveni la meniu...";
     cin.get();
-    cin.get();
 }
 
 void dificultate_meniu()

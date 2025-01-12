@@ -1,3 +1,13 @@
-
-*.json
+#Fisiere si directoare generate la build
+build/
+bin/
+obj/
+*.o
+*.out
 *.exe
+
+#Fisiere si directoare generate de Visual Studio/Visual Studio Code
+.vscode/
+*.sln
+*.json
+/.vs
