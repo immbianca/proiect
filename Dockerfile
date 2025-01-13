@@ -1,5 +1,5 @@
 FROM gcc:latest
-WORKDIR /usr/src/main
+WORKDIR /usr/src/app
 COPY main.cpp .
-RUN gcc -o main main.cpp -lstdc++
-CMD ["./main"]
+RUN gcc -o turnurile_hanoi main.cpp -lstdc++
+CMD ["./turnurile_hanoi"]
