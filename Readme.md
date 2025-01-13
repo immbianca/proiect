@@ -17,7 +17,7 @@ Acest proiect implementeaza jocul "Turnurile din Hanoi" folosind limbajul de pro
 
 ### Configuratii Software Necesare
 1. **Docker**
-    -   Asigura-te ca Docker este instalat pe masina ta lacala.
+    -   Asigura-te ca Docker este instalat pe masina ta locala.
     -Comanda pentru instalare:
      ```bash
      sudo apt install docker.io

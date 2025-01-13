@@ -1,11 +1,33 @@
-create_file:
-  image: alpine
-  script:
-    - echo "Building ..."
-    - mkdir build
-    - touch build/somefile.txt
+stages:
+  - build
+  - push
+  - deploy
 
-test_file:
-  image: alpine
+variables:
+  DOCKER_IMAGE: "$CI_REGISTRY_IMAGE/turnuri_hanoi"
+  DOCKER_TAG: "latest"
+
+#Log in Docker GITLAB
+before_script:
+  - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+
+build:
+  stage: build
   script:
-    - test -f build/somefile.txt
+    - docker build -t $DOCKER_IAGE:$DOCKER_TAG .
+    - docker tag $DOCKER_IMAGE:$DOCKER_TAG $CI_REGISTRY_IMAGE/turnuri_hanoi:$DOCKER_TAG
+
+push:
+  stage: push
+  script:
+    - docker push $DOCKER_IMAGE:$DOCKER_TAG
+
+deploy:
+  stage: deploy
+  only:
+    - main
+  script:
+    - docker pull $DOCKER_IMAGE:$DOCKER_TAG
+    - docker stop turnuri_hanoi || true
+    - docker rm turnuri_hanoi || true
+    - docker run -d --name turnuri_hanoi $DOCKER_IMAGE:$DOCKER_TAG
