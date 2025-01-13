@@ -1,25 +1,19 @@
 image: docker:stable
 
 services:
-  - name: docker:dind
-    command: ["--privileged"]
+  - docker:dind
 
-variables:
-  DOCKER_TLS_CERTDIR: ""
-  CI_REGISTRY_IMAGE: "registry.gitlab.com/bianca.mustea/proiect-sincretic-2024/turnuri_hanoi"
-  CI_REGISTRY: "registry.gitlab.com"
-
-stages:
-  - build
+before_script:
+  - docker info
 
 build:
-  stage: build
   only:
     - main
   before_script:
-    - docker login $CI_REGISTRY
+    - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   script:    
-    - docker build -t $CI_REGISTRY_IMAGE:latest .    
-    - docker push $CI_REGISTRY_IMAGE:latest    
+    - docker build -t ${CI_REGISTRY_IMAGE}:latest .    
+    - docker push ${CI_REGISTRY_IMAGE}:latest    
   after_script:
-    - docker logout $CI_REGISTRY
+    - docker logout ${CI_REGISTRY}
+  stage: build
