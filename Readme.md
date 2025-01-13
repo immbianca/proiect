@@ -67,7 +67,7 @@ Muta discul 1 de pe A pe C
 ### Rulare Automata prin GitLab CI/CD
 1. Fa un comit al codului in branch-ul principal (`main`)
 2. Pipeline-ul GitLab va face automat urmatoarele:
-    - Construieste imaginea Docker
+    - Construieste imaginea Docker.
     - Impinge imaginea in **GitLab Container Registry**.
     - Ruleaza containerul pe serverul specificat (daca este configrat).
 
