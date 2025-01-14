@@ -1,19 +1,17 @@
-image: docker:stable
+stages:
+  - build_and_publish
 
-services:
-  - docker:dind
+variables:
+  IMAGE_TAG: "registry.gitlab.com/bianca.mustea/proiect-sincretic-2024"
 
-before_script:
-  - docker info
-
-build:
+build_and_publish:
+  stage: build_and_publish
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login ghcr.io -u bianca.mustea --password-stdin
+    - docker build . -t $IMAGE_TAG
+    - docker push $IMAGE_TAG
   only:
     - main
-  before_script:
-    - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
-  script:    
-    - docker build -t ${CI_REGISTRY_IMAGE}:latest .    
-    - docker push ${CI_REGISTRY_IMAGE}:latest    
-  after_script:
-    - docker logout ${CI_REGISTRY}
-  stage: build
