@@ -60,7 +60,7 @@ Mută discul 1 de pe A pe C
 ### Rulare folosind Docker
 1. Construiește imaginea Docker:
    ```bash
-   docker build -t turnuri_hanoi: latest .
+   docker build -t turnuri_hanoi:latest .
    ```
 2. Rulează containerul:
    ```bash
@@ -76,4 +76,4 @@ Mută discul 1 de pe A pe C
 
 ## Captură de Ecran
 ![Captură de ecran a aplicației](secventa.png)
-Aceasta este o captură de ecran demonstrativă cu rularea aplicației în linia de comandă.
+    - Aceasta este o captură de ecran demonstrativă cu rularea aplicației în linia de comandă.
