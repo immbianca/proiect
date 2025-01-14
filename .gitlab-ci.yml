@@ -1,33 +1,19 @@
-stages:
-  - build
-  - push
-  - deploy
+image: docker:stable
 
-variables:
-  DOCKER_IMAGE: "$CI_REGISTRY_IMAGE/turnuri_hanoi"
-  DOCKER_TAG: "latest"
+services:
+  - docker:dind
 
-# Login în registry-ul Docker al GitLab
 before_script:
-  - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  - docker info
 
 build:
-  stage: build
-  script:
-    - docker build -t $DOCKER_IMAGE:$DOCKER_TAG .
-    - docker tag $DOCKER_IMAGE:$DOCKER_TAG $CI_REGISTRY_IMAGE/turnuri_hanoi:$DOCKER_TAG
-
-push:
-  stage: push
-  script:
-    - docker push $DOCKER_IMAGE:$DOCKER_TAG
-
-deploy:
-  stage: deploy
   only:
     - main
-  script:
-    - docker pull $DOCKER_IMAGE:$DOCKER_TAG
-    - docker stop turnuri_hanoi || true
-    - docker rm turnuri_hanoi || true
-    - docker run -d --rm --name turnuri_hanoi $DOCKER_IMAGE:$DOCKER_TAG
+  before_script:
+    - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
+  script:    
+    - docker build -t ${CI_REGISTRY_IMAGE}:latest .    
+    - docker push ${CI_REGISTRY_IMAGE}:latest    
+  after_script:
+    - docker logout ${CI_REGISTRY}
+  stage: build

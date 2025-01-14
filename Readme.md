@@ -76,4 +76,4 @@ Mută discul 1 de pe A pe C
 
 ## Captură de Ecran
 ![Captură de ecran a aplicației](secventa.png)
-    - Aceasta este o captură de ecran demonstrativă cu rularea aplicației în linia de comandă.
+   - Aceasta este o captură de ecran demonstrativă cu rularea aplicației în linia de comandă.
