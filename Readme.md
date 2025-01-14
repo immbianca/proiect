@@ -73,7 +73,7 @@ Mută discul 1 de pe A pe C
    ```
 2. Rulează containerul:
    ```bash
-   docker run -it --rm turnuri_hanoi
+   docker run -it --rm immbianca/turnuri_hanoi
    ```
 ### Rulare Automată prin GitLab CI/CD
 1. Fă un commit al codului în branch-ul principal (`main`).
