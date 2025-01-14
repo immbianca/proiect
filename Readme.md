@@ -72,6 +72,6 @@ Muta discul 1 de pe A pe C
     - Ruleaza containerul pe serverul specificat (daca este configrat).
 
 ## Captura de Ecran
-![Captura de ecran a aplicatiei]urmeaza
+![Captura de ecran a aplicatiei]()
 
-Aceasta este o captura de ecran demonstrativa cu rulareaaplicatiei de comanda.
+Aceasta este o captura de ecran demonstrativa ce contine secventa de testare.
