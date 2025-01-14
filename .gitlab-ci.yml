@@ -1,17 +1,19 @@
-stages:
-  - build_and_publish
+image: docker:stable
 
-variables:
-  IMAGE_TAG: "gitlab.upt.ro/bianca.mustea/proiect-sincretic-2024"
+services:
+  - docker:dind
 
-build_and_publish:
-  stage: build_and_publish
-  image: docker:latest
-  services:
-    - docker:dind
-  script:
-    - echo "$CI_REGISTRY_PASSWORD" | docker login gitlab.upt.ro -u bianca.mustea --password-stdin
-    - docker build . -t $IMAGE_TAG
-    - docker push $IMAGE_TAG
+before_script:
+  - docker info
+
+build:
   only:
     - main
+  before_script:
+    - docker login gitlab.upt.ro -u bianca.mustea -p ${CI_REGISTRY_PASSWORD}
+  script:    
+    - docker build -t gitlab.upt.ro/bianca.mustea/proiect-sincretic-2024:latest .    
+    - docker push gitlab.upt.ro/bianca.mustea/proiect-sincretic-2024:latest    
+  after_script:
+    - docker logout ${CI_REGISTRY}
+  stage: build
