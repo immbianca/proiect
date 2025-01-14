@@ -2,7 +2,7 @@ stages:
   - build_and_publish
 
 variables:
-  IMAGE_TAG: "registry.gitlab.com/bianca.mustea/proiect-sincretic-2024"
+  IMAGE_TAG: "gitlab.upt.ro/bianca.mustea/proiect-sincretic-2024"
 
 build_and_publish:
   stage: build_and_publish
@@ -10,7 +10,7 @@ build_and_publish:
   services:
     - docker:dind
   script:
-    - echo "$CI_REGISTRY_PASSWORD" | docker login registry.gitlab.com -u bianca.mustea --password-stdin
+    - echo "$CI_REGISTRY_PASSWORD" | docker login gitlab.upt.ro -u bianca.mustea --password-stdin
     - docker build . -t $IMAGE_TAG
     - docker push $IMAGE_TAG
   only:
