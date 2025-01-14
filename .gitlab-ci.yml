@@ -10,7 +10,7 @@ build_and_publish:
   services:
     - docker:dind
   script:
-    - echo "$CI_REGISTRY_PASSWORD" | docker login ghcr.io -u bianca.mustea --password-stdin
+    - echo "$CI_REGISTRY_PASSWORD" | docker login registry.gitlab.com -u bianca.mustea --password-stdin
     - docker build . -t $IMAGE_TAG
     - docker push $IMAGE_TAG
   only:
