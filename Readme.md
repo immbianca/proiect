@@ -1,77 +1,79 @@
-#   Proiect: Turnurile din Hanoi
+# Proiect: Turnurile din Hanoi
 
 ## Detalii despre Implementare
-Acest proiect implementeaza jocul "Turnurile din Hanoi" folosind limbajul de programare C++
+Acest proiect implementează jocul "Turnurile din Hanoi" folosind limbajul de programare C++. Aplicația utilizează un algoritm recursiv pentru a rezolva problema și afișează pașii necesari pentru a muta discurile între turnuri.
 
-### Structura Proiectului 
-- **main.cpp**: Codul sursa principal care implementeaza logica jocului.
-- **Dockerfile**: Configurarea necesara pentur a construi imaginea Docker a apicatiei.
-- **.gitlab-ci.yml**: Configuratia pipeline-ului CI/CD pentru GitLab.
-- **/gitignore**: Listeaza fisierele si directoarele care trebuie ignorate de Git.
+### Structura Proiectului
+- **main.cpp**: Codul sursă principal care implementează logica jocului.
+- **Dockerfile**: Configurarea necesară pentru a construi imaginea Docker a aplicației.
+- **.gitlab-ci.yml**: Configurația pipeline-ului CI/CD pentru GitLab.
+- **.gitignore**: Listează fișierele și directoarele care trebuie ignorate de Git.
 
-## Platforma Software Utilizata
+## Platforma Software Utilizată
 - **Limbaj**: C++
 - **Compilator**: GCC (GNU Compiler Collection)
-- **Platforma CI/CD**:  GitLab
-- **Docker**: Utilizat pentru containerizare si livrarea aplicatiei
+- **Platformă CI/CD**: GitLab
+- **Docker**: Utilizat pentru containerizare și livrarea aplicației
 
-### Configuratii Software Necesare
+### Configurații Software Necesare
 1. **Docker**
-    -   Asigura-te ca Docker este instalat pe masina ta locala.
-    -Comanda pentru instalare:
+   - Asigură-te că Docker este instalat pe mașina ta locală.
+   - Comanda pentru instalare:
      ```bash
      sudo apt install docker.io
      ```
 2. **GitLab CI/CD**
-    - Pipeline-ul automat pentru build, push si deploy este configurat in `.gitlab-ci.yml`.
+   - Pipeline-ul automat pentru build, push și deploy este configurat în `.gitlab-ci.yml`.
 3. **G++**
-    - Necesita G++ pentru compilarea manuala a codului daca nu folosesti Docker:
-    ```bash
-    sudo apt install g++
-    ```
+   - Necesită G++ pentru compilarea manuală a codului dacă nu folosești Docker:
+     ```bash
+     sudo apt install g++
+     ```
+
 ## Rezultate
-Programul afiseaza pasii necesari pentru rezolvarea problemei Turnurilor Din Hanoi pentru orice numar de discuri introdus de utilizator.
+Programul afișează pașii necesari pentru rezolvarea problemei Turnurilor din Hanoi pentru orice număr de discuri introdus de utilizator. 
 
-Exemplu de iesire pentru 3 discuri:
+Exemplu de ieșire pentru 3 discuri:
 ```
-Introduceti nuarul de discuri: 3
-Muta discul 1 de pe A pe C
-Muta discul 2 de pe A pe B
-Muta discul 1 de pe C pe B
-Muta discul 3 de pe A pe C
-Muta discul 1 de pe B pe A
-Muta discul 2 de pe B pe C
-Muta discul 1 de pe A pe C
+Introduceți numărul de discuri: 3
+Mută discul 1 de pe A pe C
+Mută discul 2 de pe A pe B
+Mută discul 1 de pe C pe B
+Mută discul 3 de pe A pe C
+Mută discul 1 de pe B pe A
+Mută discul 2 de pe B pe C
+Mută discul 1 de pe A pe C
 ```
 
-## Modalitate de Rulare 
+## Modalitate de Rulare
 
-### Rulare Locala (Fara Docker)
-1. Compileaza codul folosing G++:
-    ```bash
-    g++ -o turnuri_hanoi main.cpp
-    ```
-2. Ruleaza aplicatia:
-    ```bash 
-    ./turnuri_hanoi
-    ```
-### Rulare folosind Docker 
-1. Construieste imaginea Docker:
-    ```bash
-    docker build -t turnuri_hanoi:latest .
-    ```
-2. Ruleaza containerul:
-    ```bash
-    docker run -it --rm turnuri_hanoi
-    ```
-### Rulare Automata prin GitLab CI/CD
-1. Fa un comit al codului in branch-ul principal (`main`)
-2. Pipeline-ul GitLab va face automat urmatoarele:
-    - Construieste imaginea Docker.
-    - Impinge imaginea in **GitLab Container Registry**.
-    - Ruleaza containerul pe serverul specificat (daca este configrat).
+### Rulare Locală (Fără Docker)
+1. Compilează codul folosind G++:
+   ```bash
+   g++ -o turnuri_hanoi main.cpp
+   ```
+2. Rulează aplicația:
+   ```bash
+   ./turnuri_hanoi
+   ```
 
-## Captura de Ecran
-![Captura de ecran a aplicatiei](secventa.png)
+### Rulare folosind Docker
+1. Construiește imaginea Docker:
+   ```bash
+   docker build -t turnuri_hanoi: latest .
+   ```
+2. Rulează containerul:
+   ```bash
+   docker run -it --rm turnuri_hanoi
+   ```
 
-Aceasta este o captura de ecran demonstrativa ce contine secventa de testare.
+### Rulare Automată prin GitLab CI/CD
+1. Fă un commit al codului în branch-ul principal (`main`).
+2. Pipeline-ul GitLab va face automat următoarele:
+   - Construiește imaginea Docker.
+   - Împinge imaginea în **GitLab Container Registry**.
+   - Rulează containerul pe serverul specificat (dacă este configurat).
+
+## Captură de Ecran
+![Captură de ecran a aplicației](secventa.png)
+Aceasta este o captură de ecran demonstrativă cu rularea aplicației în linia de comandă.
