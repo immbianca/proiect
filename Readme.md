@@ -66,13 +66,20 @@ Mută discul 1 de pe A pe C
    ```bash
    docker run -it --rm turnuri_hanoi
    ```
-
+### Rulare din terminal
+1. Imaginea Docker:
+   ```bash
+   docker pull immbianca/turnuri_hanoi
+   ```
+2. Rulează containerul:
+   ```bash
+   docker run -it --rm turnuri_hanoi
+   ```
 ### Rulare Automată prin GitLab CI/CD
 1. Fă un commit al codului în branch-ul principal (`main`).
 2. Pipeline-ul GitLab va face automat următoarele:
    - Construiește imaginea Docker.
    - Împinge imaginea în **GitLab Container Registry**.
-   - Rulează containerul pe serverul specificat (dacă este configurat).
 
 ## Captură de Ecran
 ![Captură de ecran a aplicației](secventa.png)
