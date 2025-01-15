@@ -80,7 +80,10 @@ Mută discul 1 de pe A pe C
 2. Pipeline-ul GitLab va face automat următoarele:
    - Construiește imaginea Docker.
    - Împinge imaginea în **Github**.
-
+   - Dupa pull ul de pe Github, pentru rulare in terminal scrieti
+     ```bash
+      docker run -it --rm ghcr.io/immbianca/proiect
+     ```
 ## Captură de Ecran
 ![Captură de ecran a aplicației](secventa.png)
    - Aceasta este o captură de ecran demonstrativă cu rularea aplicației în linia de comandă.
