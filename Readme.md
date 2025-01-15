@@ -79,7 +79,7 @@ Mută discul 1 de pe A pe C
 1. Fă un commit al codului în branch-ul principal (`main`).
 2. Pipeline-ul GitLab va face automat următoarele:
    - Construiește imaginea Docker.
-   - Împinge imaginea în **GitLab Container Registry**.
+   - Împinge imaginea în **Github**.
 
 ## Captură de Ecran
 ![Captură de ecran a aplicației](secventa.png)
