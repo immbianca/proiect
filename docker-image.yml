@@ -7,15 +7,17 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build_and_publish:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GHCR_USERNAME }}" --password-stdin
+
     - name: Build and Push the Docker image
       run: |
-        docker login --username immbianca --password bibi3Logue ghcr.io
         docker build . --tag ghcr.io/immbianca/proiect:latest
-        docker push ghcr.io/immbianca/proiect
+        docker push ghcr.io/immbianca/proiect:latest
