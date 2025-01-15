@@ -6,13 +6,13 @@ Acest proiect implementează jocul "Turnurile din Hanoi" folosind limbajul de pr
 ### Structura Proiectului
 - **main.cpp**: Codul sursă principal care implementează logica jocului.
 - **Dockerfile**: Configurarea necesară pentru a construi imaginea Docker a aplicației.
-- **.gitlab-ci.yml**: Configurația pipeline-ului CI/CD pentru GitLab.
+- **.gitlab-ci.yml**: Configurația pipeline-ului CI/CD pentru GitHub.
 - **.gitignore**: Listează fișierele și directoarele care trebuie ignorate de Git.
 
 ## Platforma Software Utilizată
 - **Limbaj**: C++
 - **Compilator**: GCC (GNU Compiler Collection)
-- **Platformă CI/CD**: GitLab
+- **Platformă CI/CD**: GitHub
 - **Docker**: Utilizat pentru containerizare și livrarea aplicației
 
 ### Configurații Software Necesare
