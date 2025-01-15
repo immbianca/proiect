@@ -10,7 +10,7 @@ build:
   only:
     - main
   before_script:
-    - docker login registry.gitlab.upt.ro -u bianca.mustea -p ${CI_REGISTRY_PASSWORD}
+    - docker login gitlab.upt.ro -u bianca.mustea -p ${CI_REGISTRY_PASSWORD}
   script:    
     - docker build -t gitlab.upt.ro/bianca.mustea/proiect-sincretic-2024:latest .    
     - docker push gitlab.upt.ro/bianca.mustea/proiect-sincretic-2024:latest    
